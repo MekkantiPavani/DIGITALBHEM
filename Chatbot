@@ -1,0 +1,32 @@
+import random
+
+# Define responses
+responses = {
+    "hi": ["Hello!", "Hi there!", "Hey!"],
+    "how are you": ["I'm good, thanks!", "Feeling great!", "I'm doing well, thank you."],
+    "bye": ["Goodbye!", "See you later!", "Bye! Have a nice day!"],
+    "default": ["I'm not sure I understand.", "Can you rephrase that?", "Sorry, I didn't get that."],
+}
+
+# Define function to get response
+def get_response(message):
+    message = message.lower()
+    if message in responses:
+        return random.choice(responses[message])
+    else:
+        return random.choice(responses["default"])
+
+# Main function to run the chatbot
+def chat():
+    print("Chatbot: Hello! How can I help you?")
+    while True:
+        user_input = input("You: ").strip()
+        if user_input.lower() == 'exit':
+            print("Chatbot: Goodbye!")
+            break
+        response = get_response(user_input)
+        print("Chatbot:", response)
+
+# Run the chatbot
+if __name__ == "__main__":
+    chat()
